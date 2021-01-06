@@ -1,0 +1,23 @@
+{
+  "name": "sklep",
+  "version": "1.0.0",
+  "description": "Projekt zaliczeniowy",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://212.182.24.105/jakub.ozga/webdev.git"
+  },
+  "author": "Jakub Ozga",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "hbs": "^4.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
