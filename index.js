@@ -1,12 +1,18 @@
 const express = require('express')
-
-
-const usersRoutes = require('./routes/users.js');
-const bodyParser = require("body-parser")
 const port = 8000
+const bodyParser = require("body-parser")
 const app = express()
+const usersRoutes = require('./routes/users.js');
+const Guitar = require('./models/guitar')
+const guitarRoutes = require('./routes/guitars.js')
+
+const mongoose = require('./db/db')
+
+
 app.use(bodyParser.json())
 app.use('/users', usersRoutes)
+app.use('/guitars',guitarRoutes)
+
 app.set('view engine', 'hbs');
 
 
