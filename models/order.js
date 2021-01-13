@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const User = require('./user')
+const UserSchema = mongoose.model('User').schema
 
 const OrderSchema = new mongoose.Schema({
     user: {type: UserSchema, required: true,},

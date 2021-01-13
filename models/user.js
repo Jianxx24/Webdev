@@ -11,7 +11,6 @@ const UserSchema = new mongoose.Schema({
     password: {type:String, required: true,},
     email:{type: String, required: true},
     admin: {type: Boolean, default: false},
-    orders: {type:[OrderSchema]},
     phone:{type: String},
 
 })

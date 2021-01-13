@@ -1,4 +1,10 @@
+
 const mongoose = require('mongoose')
+const Pickup = require('./pickup')
+const Tuner = require('./tuner')
+const PickupSchema = mongoose.model('Pickup').schema
+const TunerSchema = mongoose.model('Tuner').schema
+
 
 const GuitarSchema = new mongoose.Schema({
     brand: {type: String, required: true,},

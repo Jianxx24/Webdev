@@ -1,4 +1,4 @@
-const mongoose = required('mongoose')
+const mongoose = require('mongoose')
 
 const TunerSchema = new mongoose.Schema({
     brand: {type: String, required: true,},
