@@ -7,7 +7,7 @@ exports.index = function(req,res) {
         try{
             guitarsList = await Guitar.find()
             console.log(guitarsList)
-            res.send(guitarsList);
+            res.render("all_guitars",{guitars:guitarsList});
         }catch(err){
             console.log(err)
         }
@@ -20,8 +20,9 @@ exports.brand = function(req,res){
     const getGuitars = async() => {
         try{
             guitarsList = await Guitar.find({brand:id})
-            console.log(guitarsList)
-            res.render('show', {guitars: guitarsList});
+            // console.log(guitarsList)
+            console.log(guitarsList[0])
+            res.render('all_guitars', {guitars: guitarsList});
         }catch(err){console.log(err)}
     }
     getGuitars()
@@ -41,23 +42,13 @@ exports.shape = function(req,res){
 }
 
 exports.addGuitar = function(req,res){
-    const Guitar = new Guitar({
+    const NewGuitar = new Guitar({
         brand : req.body.brand,
         model : req.body.model,
-        shape : req.body.shape,
-        frets : req.body.frets,
-        pickups : req.body.pickups,
-        neck:req.body.neck,
-        bridge: req.body.bridge,
-        tuners:req.body.tuners,
-        scale:req.body.scale,
-        bodywood:req.body.bodywood,
-        neckwood:req.body.neckwood,
-        profile:req.body.profile,
-        strings:req.body.strings,
+        imageUrl:req.body.imageUrl,
         price:req.body.price,
     })
-    Guitar.save().then(()=>{res.render('createShow',{item: req.body})})
+    NewGuitar.save().then(()=>{res.render('createShow',{item: req.body})})
 }
 
 

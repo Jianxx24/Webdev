@@ -9,6 +9,7 @@ const AmplifierSchema = new mongoose.Schema({
     noisegate: {type: Boolean, required: true,},
     preamptubes: {type: String, required:true,},
     outputtubes: {type: String, required: true,},
+    imageUrl: {type:String, required: true,},
     price: {type: Number, required: true,},
 })
 
