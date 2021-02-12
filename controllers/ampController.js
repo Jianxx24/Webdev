@@ -6,9 +6,9 @@ exports.index = function(req,res) {
 
     const getAmps = async() => {
         try{
-            ampsList = await Amp.find()
+            ampsList = await Amp.find().lean()
             console.log(ampsList)
-            res.send(ampsList);
+            res.render("all_amps",{amps:ampsList});
         }catch(err){
             console.log(err)
         }
@@ -21,9 +21,9 @@ exports.brand = function(req,res){
     let ampsList
     const getAmps = async() => {
         try{
-            cabsList = await Amp.find({brand:id})
+            cabsList = await Amp.find({brand:id}).lean()
             console.log(ampsList)
-            res.render('show', {amps: ampsList});
+            res.render("all_amps",{amps:ampsList});
         }catch(err){console.log(err)}
     }
     getAmps()
@@ -34,10 +34,27 @@ exports.power = function(req,res){
     let ampsList
     const getAmps = async() => {
         try{
-            ampsList = await Amp.find({power:id})
+            ampsList = await Amp.find({power:id}).lean()
             console.log(ampsList)
-            res.render('show', {amps: ampsList});
+            res.render("all_amps",{amps:ampsList});
         }catch(err){console.log(err)}
+    }
+    getAmps()
+}
+
+exports.amp = function(req,res) {
+    var id = req.params.id
+    console.log(id)
+    let ampsList
+
+    const getAmps = async() => {
+        try{
+            ampsList = await Amp.findById(id).lean()
+            console.log(ampsList)
+            res.render("all_amps",{amps:ampsList});
+        }catch(err){
+            console.log(err)
+        }
     }
     getAmps()
 }
@@ -58,4 +75,4 @@ exports.addAmp = function(req,res){
     Amp.save().then(()=>{res.render('createShow',{item: req.body})})
 }
 
-console.log("kntroler gotowy")
+console.log("kontroler gotowy")

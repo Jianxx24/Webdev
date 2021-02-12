@@ -8,8 +8,12 @@ const Cab = require('./models/cabinet')
 const User = require('./models/user')
 const Basket = require('./models/basket')
 const Order= require('./models/basket')
+var passport = require('passport');
+var session = require('express-session');
+const { body, validationResult } = require('express-validator');
 
-
+const hbs = require('express-handlebars');
+var path = require('path');
 const usersRoutes = require('./routes/users.js');
 const guitarRoutes = require('./routes/guitars')
 const ampRoutes = require('./routes/amps')
@@ -25,7 +29,7 @@ app.use('/guitars',guitarRoutes)
 app.use('/amps', ampRoutes)
 app.use('/cabs', cabRoutes)
 app.use('/users', userRoutes)
-
+app.engine('hbs',hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname+'/views/layouts/'}));
 app.set('view engine', 'hbs');
 
 

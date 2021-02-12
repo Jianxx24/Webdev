@@ -5,9 +5,9 @@ exports.index = function(req,res) {
 
     const getGuitars = async() => {
         try{
-            guitarsList = await Guitar.find()
+            guitarsList = await Guitar.find().lean()
             console.log(guitarsList)
-            res.render("all_guitars",{guitars:guitarsList});
+            res.render('all_guitars',{guitars:guitarsList});
         }catch(err){
             console.log(err)
         }
@@ -19,7 +19,7 @@ exports.brand = function(req,res){
     let guitarsList
     const getGuitars = async() => {
         try{
-            guitarsList = await Guitar.find({brand:id})
+            guitarsList = await Guitar.find({brand: id}).lean()
             // console.log(guitarsList)
             console.log(guitarsList[0])
             res.render('all_guitars', {guitars: guitarsList});
@@ -27,16 +27,19 @@ exports.brand = function(req,res){
     }
     getGuitars()
 }
-
-exports.shape = function(req,res){
-    var shape = req.params.shape
+exports.guitar = function(req,res) {
+    var id = req.params.id
+    console.log(id)
     let guitarsList
+
     const getGuitars = async() => {
         try{
-            guitarsList = await Guitar.find({shape:shape})
+            guitarsList = await Guitar.findById(id).lean()
             console.log(guitarsList)
-            res.render('show', {guitars : guitarsList})
-        }catch(err){console.log(err)}
+            res.render("guitar",{guitars:guitarsList});
+        }catch(err){
+            console.log(err)
+        }
     }
     getGuitars()
 }
@@ -53,4 +56,4 @@ exports.addGuitar = function(req,res){
 
 
 
-console.log("kntroler gotowy")
+console.log("kontroler gotowy")

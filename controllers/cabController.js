@@ -7,9 +7,9 @@ exports.index = function(req,res) {
 
     const getCabs = async() => {
         try{
-            cabsList = await Cab.find()
+            cabsList = await Cab.find().lean()
             console.log(cabsList)
-            res.send(cabsList);
+            res.render("all_cabs",{cabs:cabsList});
         }catch(err){
             console.log(err)
         }
@@ -22,9 +22,9 @@ exports.brand = function(req,res){
     let cabsList
     const getCabs = async() => {
         try{
-            cabsList = await Cabinet.find({brand:id})
+            cabsList = await Cabinet.find({brand:id}).lean()
             console.log(cabsList)
-            res.render('show', {cabs: cabsList});
+            res.render('all_cabs', {cabs: cabsList});
         }catch(err){console.log(err)}
     }
     getCabs()
@@ -35,9 +35,9 @@ exports.power = function(req,res){
     let cabsList
     const getCabs = async() => {
         try{
-            cabsList = await Cabinet.find({power:id})
+            cabsList = await Cabinet.find({power:id}).lean()
             console.log(cabsList)
-            res.render('show', {cabs: cabsList});
+            res.render('all_cabs', {cabs: cabsList});
         }catch(err){console.log(err)}
     }
     getCabs()
@@ -48,12 +48,29 @@ exports.speaker= function(req,res){
     let cabsList
     const getCabs = async() => {
         try{
-            cabsList = await Cabinet.find({speaker:id})
+            cabsList = await Cabinet.find({speaker:id}).lean()
             console.log(cabsList)
-            res.render('show', {cabs: cabsList});
+            res.render('all_cabs', {cabs: cabsList});
         }catch(err){console.log(err)}
     }
     getCabs()
+}
+
+exports.cab = function(req,res) {
+    var id = req.params.id
+    console.log(id)
+    let cabsList
+
+    const getCabs = async() => {
+        try{
+            cabsList = await Cabinet.findById(id).lean()
+            console.log(cabsList)
+            res.render("all_cabs",{cabs:cabsList});
+        }catch(err){
+            console.log(err)
+        }
+    }
+    getGuitars()
 }
 
 exports.addCab = function(req,res){
