@@ -2,11 +2,16 @@
 
 <div class="row products">
     
-    {{# each amps}
-    <div>
-            <img src="{{this.imageUrl}}">
-            Marka: {{this.brand}} Model: {{this.model}}
-            <br />
-    </div>
+    {{# each amps}}
+    <div class="border card col-sm-3 m-2">
+  <img class="card-img-top" src="{{this.imageUrl}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{this.brand}}</h5>
+    <p class="card-text">{{this.model}}</p>
+    <p class="card-text">{{this.price}} PLN</p>
+    <a href="/amps/model/{{this._id}}" class="btn btn-secondary">Więcej</a>
+
+</div>
+</div>
     {{/each}}
 </div>

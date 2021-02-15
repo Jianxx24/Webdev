@@ -1,5 +1,20 @@
 <div>
-            <img src="{{guitars.imageUrl}}">
-            Marka: {{guitars.brand}} Model: {{guitars.model}}
-            <br />
-    </div>
+
+        <div class="border container w-25 bg-dark text-white px-md-5 p-5 mt-3"><img src="{{guitars.imageUrl}}"><br>
+                <h3 class=" text-center">{{guitars.brand}}:</h3><br>
+                <div class="row">
+                        <p class="col w-50">{{guitars.model}}</p>
+                        <p class="col w-50">{{guitars.description}}<br></p><br>
+                        <p class="col w-50">{{guitars.price}}</p>
+                </div>
+                {{#if session.passport.user}}
+                <form method="post" action='/guitars/delete'>
+                <input type='hidden' value = {{guitars._id}} name="id"/>
+                <button type="submit" class="btn btn-danger">Usuń</button></form><br>
+                <form method="post" action='/guitars/edit'>
+                <input type='hidden' value = {{guitars._id}} name="id"/>
+                <button type="submit" class="btn btn-warning">Edytuj</button></form>{{/if}}
+        </div>
+        <div class="card-group card columns px-md-5 p-2">
+        </div>
+        </div>

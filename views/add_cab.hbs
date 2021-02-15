@@ -1,0 +1,44 @@
+<form class="rounded-lg text-white mt-3 p-5 container w-25 shadow-lg bg-dark form-group col px-md-5" method="post" action="/cabs/add" enctype="multipart/form-data">
+    
+    <div class="form-group">
+        <label>Marka</label>
+        <input type="text" name="brand" class="form-control" placeholder="Marshall">
+    </div>
+
+    <div class="form-group">
+        <label>Model</label>
+        <input type="text" name="model" class="form-control"  placeholder="Code 412">
+    </div>
+
+     <div class="form-group">
+        <label>Moc</label>
+        <input type="number" name="power" class="form-control"  placeholder="200">
+    </div>
+    
+    <div class="form-group">
+        <label>Impendacja</label>
+        <input type="text" name="impendation" class="form-control"  placeholder="8 Ohm">
+    </div>
+
+    <div class="form-group">
+        <label>Głośniki</label>
+        <input type="text" name="speakers" class="form-control"  placeholder="4x12">
+    </div>
+
+    <div class="form-group">
+        <label>Typ Głośnika</label>
+        <input type="text" name="speakertype" class="form-control"  placeholder="Custom Voiced">
+    </div>
+   
+    <div class="form-group">
+        <label>Cena</label>
+        <input type="number" name="price" class="form-control"  placeholder="1000">
+    </div>
+
+    <div class="form-group">
+    <label>Zdjęcie</label>
+    <input type="file" class="form-control-file" name="image">
+  </div>
+
+    <button type="submit" class='mt-2 btn btn-secondary'>Dodaj</button>
+</form>

@@ -1,0 +1,22 @@
+<div>
+
+        <div class="border container w-25 bg-dark text-white px-md-5 p-5 mt-3"><img src="{{cabs.imageUrl}}" class="center"><br>
+                <h3 class=" text-center">{{cabs.brand}}:</h3><br>
+                <h4 class="col w-50">{{cabs.model}}</h4>
+                <div class="row">
+                        
+                        <p class="row w-50">Moc: {{cabs.power}}<br></p><br>
+                        <p class="row w-50">Impendancja: {{cabs.impendation}}</p>
+                        <p class="row w-50">Głośniki: {{cabs.speakers}}</p>
+                        <p class="row w-50">Typ Głośników: {{cabs.speakertype}}</p>
+                        <h4 class="row w-50">Cena: {{cabs.price}}</h4>
+                </div>
+                <br>
+                {{#if session.passport.user}}
+                <form method="post" action='/cabs/delete'>
+                <input type='hidden' value = {{cabs._id}} name="id"/>
+                <button type="submit" class="btn btn-danger">Usuń</button></form>{{/if}}
+        </div>
+        <div class="card-group card columns px-md-5 p-2">
+        </div>
+        </div>

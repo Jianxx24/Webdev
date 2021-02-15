@@ -1,0 +1,30 @@
+<form class="rounded-lg text-white mt-3 p-5 container w-25 shadow-lg bg-dark form-group col px-md-5" method="post" action="/guitars/add" enctype="multipart/form-data">
+    
+    <div class="form-group">
+        <label>Marka</label>
+        <input type="text" name="brand" class="form-control" placeholder="Epiphone">
+    </div>
+
+    <div class="form-group">
+        <label>Model</label>
+        <input type="text" name="model" class="form-control"  placeholder="Prophecy Les Paul EX ME">
+    </div>
+
+     <div class="form-group">
+        <label>Opis</label>
+        <input type="text" name="description" class="form-control"  placeholder="Ilość progów: 24, Przetworniki: 1x EMG 81, 1x EMG 85, Mostek: Stały">
+    </div>
+    
+
+    <div class="form-group">
+        <label>Cena</label>
+        <input type="number" name="price" class="form-control"  placeholder="2900">
+    </div>
+
+    <div class="form-group">
+    <label>Zdjęcie</label>
+    <input type="file" class="form-control-file" name="image">
+  </div>
+
+    <button type="submit" class='mt-2 btn btn-secondary'>Dodaj</button>
+</form>

@@ -2,11 +2,12 @@ const express = require('express')
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var User = require('../models/user');
-var flash = require('req-flash');
-const bcrypt = require('bcryptjs');
-const jwt = require("jsonwebtoken");
+var flash = require('connect-flash');
+const bcrypt = require('bcrypt');
+var passport=require('passport')
 const bodyParser = require("body-parser")
 const { body, validationResult } = require('express-validator');
+const {ensureAuthenticated} = require("../config/auth.js")
 const router = express.Router();
 router.use(bodyParser.urlencoded({
     extended: true
@@ -15,13 +16,6 @@ router.use(bodyParser.urlencoded({
 router.use(cookieParser());
 router.use(session({ secret: '123' }));
 router.use(flash())
-const uzytkownicy = [
-    {
-        imie: "Jan",
-        nazwisko: "Kowalski",
-        email: "janko@exmample.com"
-    }
-]
 
 router.get('/', (req, res) => {
     res.send(uzytkownicy)
@@ -116,7 +110,6 @@ router.post('/register', function (req, res) {
 
 router.get('/login', function (req, res) {
 
-    if (res.locals.user) res.redirect('/');
 
     res.render('login', {
         title: 'Zaloguj'
@@ -125,21 +118,11 @@ router.get('/login', function (req, res) {
 });
 
 router.post('/login', function (req, res, next) {
-    var username = req.body.username
-    var password = req.body.password
-    User.findOne({ username: username }).then(user => {
-        if (user){
-            bcrypt.compare(password, user.password, function (err, result) {
-                if (err) {console.log("błąd"); res.json({ error: err }) } if (result) {
-                    console.log("coś")
-                    let token = jwt.sign({ username: user.username }, 'szyfr', { expiresIn: '1H' })
-                    console.log("zalogowano")
-                    res.render('index')
-                }
-                else {console.log("błędne hasło!"); req.flash('warning', "Błędne hasło!"); res.render('login', { title: "Zaloguj" }) }
-            })
-        }
-})
+    passport.authenticate('local',{
+        successRedirect : '/',
+        failureRedirect : '/users/login',
+        failureFlash : true,
+        })(req,res,next);
 });
 
 router.get('/logout', function (req, res) {
@@ -147,7 +130,7 @@ router.get('/logout', function (req, res) {
     req.logout();
 
     req.flash('success', 'Wylogowano!');
-    res.redirect('/users/login');
+    res.redirect('/');
 
 });
 

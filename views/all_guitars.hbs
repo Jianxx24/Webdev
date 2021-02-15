@@ -1,10 +1,20 @@
 <div class="row products">
     
-    {{# each guitars}}
-    <div>
-            <img src="{{this.imageUrl}}">
-            Marka: {{this.brand}} Model: {{this.model}}
-            <br />
-    </div>
-    {{/each}}
+    
+    <div class="card-group card-columns px-md-5 p-2">
+{{# each guitars}}
+<div class="border card col-sm-3 m-2">
+  <img class="card-img-top" src="{{this.imageUrl}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{this.brand}}</h5>
+    <p class="card-text">{{this.model}}</p>
+    
+    <p class="card-text">{{this.price}}</p>
+    <a href="/guitars/model/{{this._id}}" class="btn btn-secondary">Więcej</a>
+
+</div>
+</div>
+{{/each}}
+
+</div>
 </div>

@@ -1,0 +1,53 @@
+<form class="rounded-lg text-white mt-3 p-5 container w-25 shadow-lg bg-dark form-group col px-md-5" method="post" action="/amps/add" enctype="multipart/form-data">
+    
+    <div class="form-group">
+        <label>Marka</label>
+        <input type="text" name="brand" class="form-control" placeholder="Marshall">
+    </div>
+
+    <div class="form-group">
+        <label>Model</label>
+        <input type="text" name="model" class="form-control"  placeholder="DSL 100 HR">
+    </div>
+
+     <div class="form-group">
+        <label>Moc</label>
+        <input type="number" name="power" class="form-control"  placeholder="100">
+    </div>
+    
+    <div class="form-group">
+        <label>Kanały</label>
+        <input type="number" name="channels" class="form-control"  placeholder="2">
+    </div>
+
+    <div class="form-group">
+        <label>Pętla efektów</label>
+        <input type="checkbox" name="fxloop" class="form-control" value='true' >
+    </div>
+
+    <div class="form-group">
+        <label>Bramka szumów</label>
+        <input type="checkbox" name="noisegate" class="form-control" value='true'>
+    </div>
+
+    <div class="form-group">
+        <label>Lampy PreAmp</label>
+        <input type="text" name="preamptubes" class="form-control"  placeholder="ECC83">
+    </div>
+    <div class="form-group">
+        <label>Lampy Output</label>
+        <input type="text" name="outputtubes" class="form-control"  placeholder="EL34">
+    </div>
+
+    <div class="form-group">
+        <label>Cena</label>
+        <input type="number" name="price" class="form-control"  placeholder="2900">
+    </div>
+
+    <div class="form-group">
+    <label>Zdjęcie</label>
+    <input type="file" class="form-control-file" name="image">
+  </div>
+
+    <button type="submit" class='mt-2 btn btn-secondary'>Dodaj</button>
+</form>

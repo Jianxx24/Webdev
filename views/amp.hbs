@@ -1,0 +1,24 @@
+<div>
+
+        <div class="border container w-25 bg-dark text-white px-md-5 p-5 mt-3"><img src="{{amps.imageUrl}}"><br>
+                <h3 class=" text-center">{{amps.brand}}:</h3>
+                
+                        <h4 class="text-center">{{amps.model}}</h4><br>
+                <div class="row">
+                        <p class="row w-50">Moc:{{amps.power}}<br></p><br>
+                        <p class="row w-50">Liczba kanałów: {{amps.channels}}</p>
+                        <p class="row w-50">Lampy PreAmp: {{amps.preamptubes}}</p>
+                        <p class="row w-50">Lampy Output: {{amps.outputtubes}}</p>
+                        <p class="row w-50">Pętla efektów: {{amps.fxloop}}</p>
+                        <p class="row w-50">Bramka Szumów: {{amps.noisegate}}</p>
+                        <h4 class="row w-50">Cena: {{amps.price}}</h4>
+                </div>
+                <br>
+                {{#if session.passport.user}}
+                <form method="post" action='/amps/delete'>
+                <input type='hidden' value = {{amps._id}} name="id"/>
+                <button type="submit" class="btn btn-danger">Usuń</button></form>{{/if}}
+        </div>
+        <div class="card-group card columns px-md-5 p-2">
+        </div>
+        </div>

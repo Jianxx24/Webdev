@@ -1,0 +1,32 @@
+<form class="rounded-lg text-white mt-3 p-5 container w-25 shadow-lg bg-dark form-group col px-md-5" method="post" action="/guitars/editGuitar" enctype="multipart/form-data">
+    <div class="form-group">
+        <input type="hidden" name="id" class="form-control" value="{{guitar._id}}">
+    </div>
+    <div class="form-group">
+        <label>Marka</label>
+        <input type="text" name="brand" class="form-control" value="{{guitar.brand}}">
+    </div>
+
+    <div class="form-group">
+        <label>Model</label>
+        <input type="text" name="model" class="form-control"  value="{{guitar.model}}">
+    </div>
+
+     <div class="form-group">
+        <label>Opis</label>
+        <input type="text" name="description" class="form-control"  value="{{guitar.description}}">
+    </div>
+    
+
+    <div class="form-group">
+        <label>Cena</label>
+        <input type="number" name="price" class="form-control"  value="{{guitar.price}}">
+    </div>
+
+    <div class="form-group">
+    <label>Zdjęcie</label>
+    <input type="file" class="form-control-file" name="image">
+  </div>
+
+    <button type="submit" class='mt-2 btn btn-secondary'>Zamień</button>
+</form>
